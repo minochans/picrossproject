@@ -1,0 +1,1 @@
+ScoutSplash.o: ScoutSplash.s
