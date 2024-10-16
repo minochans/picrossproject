@@ -23,7 +23,8 @@
 #define LONG_PRESS_THRESHOLD 30  // 長押しとみなすフレーム数
 
 // ボタンの状態を保持する構造体
-typedef struct {
+typedef struct 
+{
     u16 key;  // 現在のボタンの状態
     u16 keyr; // 長押し状態
     u16 key_up; // 上げ判定
@@ -39,7 +40,8 @@ u32 sel_cell_y = 1; //選択中セル縦方向位置（初期位置：左上）
 bool cel_state[50][50];
 
 // グリッドの描画領域に基づいてCELL_SIZEを自動調整する
-u32 calculateCellSize() {
+u32 calculateCellSize() 
+{
     // ヒント部分のセル数＋色塗り部分のセル数
     u32 Widthcells = MAX_HINT_X + GRID_CELLS_X;  // 横方向
     u32 Heightcells = MAX_HINT_Y + GRID_CELLS_Y; // 縦方向
@@ -59,28 +61,36 @@ void Mode3PutPixel(u32 x, u32 y, u16 color)
 }
 
 // グリッドを描画する関数（ヒント部分を追加）
-void drawGrid(u32 cellSize) {
+void drawGrid(u32 cellSize)
+{
     // グリッド全体の幅と高さ（ヒント部分を含む）
     u32 totalWidth = (MAX_HINT_X + GRID_CELLS_X) * cellSize;
     u32 totalHeight = (MAX_HINT_Y + GRID_CELLS_Y) * cellSize;
 
-    for (u32 y = 0; y <= totalHeight; y++) {
-        for (u32 x = 0; x <= totalWidth; x++) {
+    for (u32 y = 0; y <= totalHeight; y++)
+    {
+        for (u32 x = 0; x <= totalWidth; x++)
+        {
             // ヒント部分の描画（上側と左側の部分）
-            if (x < MAX_HINT_X * cellSize || y < MAX_HINT_Y * cellSize) {
+            if (x < MAX_HINT_X * cellSize || y < MAX_HINT_Y * cellSize)
+            {
                 Mode3PutPixel(x, y, HINT_COLOR);
             }
             // 色塗り部分のグリッド線の描画（セルの境界）
-            else if (x % cellSize == 0 || y % cellSize == 0) {
+            else if (x % cellSize == 0 || y % cellSize == 0) 
+            {
                 Mode3PutPixel(x, y, GRID_COLOR);
-            } else {
+            }
+            else
+            {
                 Mode3PutPixel(x, y, BG_COLOR);  // 背景色を塗りつぶす
             }
         }
     }
 }
 
-void drawSelCell(u32 cellSize, u32 sel_x, u32 sel_y, bool col) {
+void drawSelCell(u32 cellSize, u32 sel_x, u32 sel_y, bool col)
+{
     //セル初期位置
     u32 start_cell_picx = MAX_HINT_X*cellSize;
     u32 start_cell_picy = MAX_HINT_Y*cellSize;
@@ -91,13 +101,17 @@ void drawSelCell(u32 cellSize, u32 sel_x, u32 sel_y, bool col) {
 
     int draw_color;
 
-    if(col == 1){
+    if(col == 1)
+    {
         draw_color = SELECT_CELL_COLOR;
-    }else{
+    }
+    else
+    {
         draw_color = GRID_COLOR;
     }
 
-    for (u32 i = 0; i < cellSize; i++) {
+    for (u32 i = 0; i < cellSize; i++) 
+    {
         Mode3PutPixel(start_draw_picx + i, start_draw_picy, draw_color);             //選択セル描画（上辺）
         Mode3PutPixel(start_draw_picx + i, start_draw_picy + cellSize, draw_color);  //選択セル描画（下辺）
         Mode3PutPixel(start_draw_picx, start_draw_picy + i, draw_color);             //選択セル描画（左辺）
@@ -105,7 +119,8 @@ void drawSelCell(u32 cellSize, u32 sel_x, u32 sel_y, bool col) {
     }
 }
 
-void drawCell(u32 cellSize, bool col) {
+void drawCell(u32 cellSize, bool col) 
+{
     //塗りセル初期位置
     u32 start_cell_picx = MAX_HINT_X*cellSize;
     u32 start_cell_picy = MAX_HINT_Y*cellSize;
@@ -116,21 +131,27 @@ void drawCell(u32 cellSize, bool col) {
 
     int draw_color;
 
-    if(col == 1){
+    if(col == 1)
+    {
         draw_color = GRID_COLOR;
-    }else{
+    }
+    else
+    {
         draw_color = BG_COLOR;
     }
 
-    for (u32 i = 1; i < cellSize; i++) {
-        for (u32 j = 1; j < cellSize; j++) {
+    for (u32 i = 1; i < cellSize; i++) 
+    {
+        for (u32 j = 1; j < cellSize; j++) 
+        {
             Mode3PutPixel(start_draw_picx + i, start_draw_picy +j, draw_color);             //選択セル描画（上辺）
         }
     }
 }
 
 // ボタンの状態を更新する関数
-void updateKeyState() {
+void updateKeyState(void)
+{
     scanKeys();
     keyState.key = keysDown();  // 1フレーム前の状態を保持
     keyState.keyr = keysDownRepeat(); // 現在のボタンの状態を読み取る
@@ -138,25 +159,31 @@ void updateKeyState() {
     keyState.keysHeld = keysHeld();
 }
 
-void select_cell_update(){
-    if (((keyState.key & KEY_LEFT) || (keyState.keyr & KEY_LEFT)) && (sel_cell_x > 1)){
+void select_cell_update()
+{
+    if (((keyState.key & KEY_LEFT) || (keyState.keyr & KEY_LEFT)) && (sel_cell_x > 1))
+    {
         sel_cell_x--;
     }
 
-    if (((keyState.key & KEY_RIGHT) || (keyState.keyr & KEY_RIGHT)) && (sel_cell_x < GRID_CELLS_X)){
+    if (((keyState.key & KEY_RIGHT) || (keyState.keyr & KEY_RIGHT)) && (sel_cell_x < GRID_CELLS_X))
+    {
         sel_cell_x++;
     }
 
-    if (((keyState.key & KEY_UP) || (keyState.keyr & KEY_UP)) && (sel_cell_y > 1)){
+    if (((keyState.key & KEY_UP) || (keyState.keyr & KEY_UP)) && (sel_cell_y > 1))
+    {
         sel_cell_y--;
     }
 
-    if (((keyState.key & KEY_DOWN) || (keyState.keyr & KEY_DOWN)) && (sel_cell_y < GRID_CELLS_Y)){
+    if (((keyState.key & KEY_DOWN) || (keyState.keyr & KEY_DOWN)) && (sel_cell_y < GRID_CELLS_Y))
+    {
         sel_cell_y++;
     }
 }
 
-int main(void) {
+int main(void) 
+{
     // GBAをモード3に設定（240x160の16ビットカラー）
     REG_DISPCNT = MODE_3 | BG2_ENABLE;
 
@@ -171,7 +198,11 @@ int main(void) {
     drawGrid(cellSize);
     drawSelCell(cellSize, sel_cell_x, sel_cell_y, 1);
 
-	while (1) {
+    //長押し描画指定
+    int draw_cell_color = 2; //長押し中の塗セル指定をリセット
+
+	while (1)
+    {
         VBlankIntrWait();
 
         u32 sel_cell_x_old = sel_cell_x;
@@ -180,37 +211,60 @@ int main(void) {
         updateKeyState();  // ボタン状態更新
         select_cell_update(); //選択セル更新
 
-        if(keyState.key & KEY_A){
-            if(cel_state[sel_cell_x][sel_cell_y] == 0){
+        if(keyState.key & KEY_A)
+        {
+            if(cel_state[sel_cell_x][sel_cell_y] == 0)
+            {
                 drawCell(cellSize, 1);
                 cel_state[sel_cell_x][sel_cell_y] = 1;
-            }else{
+                draw_cell_color = 1;                     //長押し中の塗セル指定を黒に
+            }
+            else
+            {
                 drawCell(cellSize, 0);
                 cel_state[sel_cell_x][sel_cell_y] = 0;
+                draw_cell_color = 0;                     //長押し中の塗セル指定を白に
             }
         }
 
-        if((sel_cell_x != sel_cell_x_old) || (sel_cell_y != sel_cell_y_old)){
+        if((sel_cell_x != sel_cell_x_old) || (sel_cell_y != sel_cell_y_old))
+        {
             drawSelCell(cellSize, sel_cell_x_old, sel_cell_y_old, 0);
             drawSelCell(cellSize, sel_cell_x, sel_cell_y, 1);
 
-            if(keyState.key & KEY_A){
-                if(cel_state[sel_cell_x][sel_cell_y] == 0){
+            if(keyState.key & KEY_A)
+            {
+                if(cel_state[sel_cell_x][sel_cell_y] == 0)
+                {
                     drawCell(cellSize, 1);
                     cel_state[sel_cell_x][sel_cell_y] = 1;
-                }else{
+                    draw_cell_color = 1;
+                }
+                else
+                {
                     drawCell(cellSize, 0);
                     cel_state[sel_cell_x][sel_cell_y] = 0;
+                    draw_cell_color = 0;
                 }
-            }else if(keyState.keysHeld & KEY_A){
-                if(cel_state[sel_cell_x][sel_cell_y] == 0){
+            }
+            else if(keyState.keysHeld & KEY_A)
+            {
+                if((cel_state[sel_cell_x][sel_cell_y] == 0) && (draw_cell_color == 1))
+                {
                     drawCell(cellSize, 1);
                     cel_state[sel_cell_x][sel_cell_y] = 1;
+                }
+                else if((cel_state[sel_cell_x][sel_cell_y] == 1) && (draw_cell_color == 0))
+                {
+                    drawCell(cellSize, 0);
+                    cel_state[sel_cell_x][sel_cell_y] = 0;
                 }
             }
         }
 
-        
+        if(keyState.key_up & KEY_A){
+            draw_cell_color = 2; //長押し中の塗セル指定をリセット
+        }
 	}
 
     return 0;

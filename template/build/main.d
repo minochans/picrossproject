@@ -1,5 +1,5 @@
 main.o: \
- C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_new/template/source/main.c \
+ C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_git/picrossproject/template/source/main.c \
  C:/devkitPro/libgba/include/gba_console.h \
  C:/devkitPro/libgba/include/gba_base.h \
  C:/devkitPro/libgba/include/gba_types.h \
