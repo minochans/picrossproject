@@ -6,10 +6,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define GRID_COLOR RGB5(0, 0, 0)  // グリッドの色（黒）
+#define GRID_COLOR RGB5(10, 10, 10)  // グリッドの色（黒）
+#define GRID_FIVE_COLOR RGB5(24, 24, 24)  // グリッドの色（黒）
 #define BG_COLOR RGB5(31, 31, 31)       // 背景色（白）
 #define HINT_COLOR RGB5(28, 28, 28)    // ヒント部分の色（薄い白）
-#define SELECT_CELL_COLOR RGB5(0, 0, 24)       // 選択中セルの色（青）
+#define SELECT_CELL_COLOR RGB5(24, 0, 0)       // 選択中セルの色（青）
 
 
 // 色塗り部分の縦横のセル数（ピクロスのパズル部分）
@@ -79,7 +80,17 @@ void drawGrid(u32 cellSize)
             // 色塗り部分のグリッド線の描画（セルの境界）
             else if (x % cellSize == 0 || y % cellSize == 0) 
             {
-                Mode3PutPixel(x, y, GRID_COLOR);
+                if((x == MAX_HINT_X * cellSize + 5*cellSize)
+                || (x == MAX_HINT_X * cellSize + 10*cellSize)
+                || (y == MAX_HINT_Y * cellSize + 5*cellSize)
+                || (y == MAX_HINT_Y * cellSize + 10*cellSize))
+                {
+                    Mode3PutPixel(x, y, GRID_FIVE_COLOR);
+                }
+                else
+                {
+                    Mode3PutPixel(x, y, GRID_COLOR);
+                }
             }
             else
             {
@@ -117,6 +128,42 @@ void drawSelCell(u32 cellSize, u32 sel_x, u32 sel_y, bool col)
         Mode3PutPixel(start_draw_picx, start_draw_picy + i, draw_color);             //選択セル描画（左辺）
         Mode3PutPixel(start_draw_picx + cellSize, start_draw_picy + i, draw_color);  //選択セル描画（右辺）
     }
+
+    if(col == 0)
+    {
+        if(sel_x == 5 || sel_x == 10)
+        {
+            //右辺FIVEセル塗
+            for (u32 i = 0; i <= cellSize; i++) 
+            {
+                Mode3PutPixel(start_draw_picx + cellSize, start_draw_picy + i, GRID_FIVE_COLOR);  //選択セル描画（右辺）
+            }
+        }
+        if(sel_x == 6 || sel_x == 11)
+        {
+            //左辺FIVEセル塗
+            for (u32 i = 0; i <= cellSize; i++) 
+            {
+                Mode3PutPixel(start_draw_picx, start_draw_picy + i, GRID_FIVE_COLOR);             //選択セル描画（左辺）
+            }
+        }
+        if(sel_y == 5 || sel_y == 10)
+        {
+            //下辺FIVEセル塗
+            for (u32 i = 0; i <= cellSize; i++) 
+            {
+                Mode3PutPixel(start_draw_picx + i, start_draw_picy + cellSize, GRID_FIVE_COLOR);  //選択セル描画（下辺）
+            }
+        }
+        if(sel_y == 6 || sel_y == 11)
+        {
+            //上辺FIVEセル塗
+            for (u32 i = 0; i <= cellSize; i++) 
+            {
+                Mode3PutPixel(start_draw_picx + i, start_draw_picy, GRID_FIVE_COLOR);             //選択セル描画（上辺）
+            }
+        }
+    }
 }
 
 void drawCell(u32 cellSize, bool col) 
@@ -144,7 +191,7 @@ void drawCell(u32 cellSize, bool col)
     {
         for (u32 j = 1; j < cellSize; j++) 
         {
-            Mode3PutPixel(start_draw_picx + i, start_draw_picy +j, draw_color);             //選択セル描画（上辺）
+            Mode3PutPixel(start_draw_picx + i, start_draw_picy +j, draw_color);
         }
     }
 }
