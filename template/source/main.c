@@ -13,12 +13,12 @@
 
 
 // 色塗り部分の縦横のセル数（ピクロスのパズル部分）
-#define GRID_CELLS_X 22   // 横方向のセル数
-#define GRID_CELLS_Y 14   // 縦方向のセル数
+#define GRID_CELLS_X 15   // 横方向のセル数
+#define GRID_CELLS_Y 15   // 縦方向のセル数
 
 // ヒント部分の最大数
-#define MAX_HINT_X 10  // 横方向のヒントの最大セル数
-#define MAX_HINT_Y 10  // 縦方向のヒントの最大セル数
+#define MAX_HINT_X 7  // 横方向のヒントの最大セル数
+#define MAX_HINT_Y 7  // 縦方向のヒントの最大セル数
 
 #define LONG_PRESS_THRESHOLD 30  // 長押しとみなすフレーム数
 

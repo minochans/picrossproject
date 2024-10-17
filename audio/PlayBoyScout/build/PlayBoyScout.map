@@ -898,14 +898,14 @@ Linker script and memory map
  .debug_abbrev  0x000006e8      0x2fc C:/devkitPro/libgba/lib\libgba.a(BoyScout.o)
  .debug_abbrev  0x000009e4       0x14 C:/devkitPro/libgba/lib\libgba.a(InterruptDispatcher.o)
 
-.debug_line     0x00000000     0x5ca6
+.debug_line     0x00000000     0x5cc4
  *(.debug_line)
- .debug_line    0x00000000      0x320 PlayBoyScout.o
- .debug_line    0x00000320      0x1d7 C:/devkitPro/libgba/lib\libgba.a(Compression.o)
- .debug_line    0x000004f7      0x517 C:/devkitPro/libgba/lib\libgba.a(fade.o)
- .debug_line    0x00000a0e      0x950 C:/devkitPro/libgba/lib\libgba.a(interrupt.o)
- .debug_line    0x0000135e     0x48d0 C:/devkitPro/libgba/lib\libgba.a(BoyScout.o)
- .debug_line    0x00005c2e       0x78 C:/devkitPro/libgba/lib\libgba.a(InterruptDispatcher.o)
+ .debug_line    0x00000000      0x33e PlayBoyScout.o
+ .debug_line    0x0000033e      0x1d7 C:/devkitPro/libgba/lib\libgba.a(Compression.o)
+ .debug_line    0x00000515      0x517 C:/devkitPro/libgba/lib\libgba.a(fade.o)
+ .debug_line    0x00000a2c      0x950 C:/devkitPro/libgba/lib\libgba.a(interrupt.o)
+ .debug_line    0x0000137c     0x48d0 C:/devkitPro/libgba/lib\libgba.a(BoyScout.o)
+ .debug_line    0x00005c4c       0x78 C:/devkitPro/libgba/lib\libgba.a(InterruptDispatcher.o)
 
 .debug_frame    0x00000000      0x3c8
  *(.debug_frame)
@@ -915,15 +915,15 @@ Linker script and memory map
  .debug_frame   0x00000174       0xb0 C:/devkitPro/libgba/lib\libgba.a(interrupt.o)
  .debug_frame   0x00000224      0x1a4 C:/devkitPro/libgba/lib\libgba.a(BoyScout.o)
 
-.debug_str      0x00000000      0xd88
+.debug_str      0x00000000      0xda6
  *(.debug_str)
- .debug_str     0x00000000      0xd88 PlayBoyScout.o
-                                0x4a0 (size before relaxing)
- .debug_str     0x00000d88      0x27c C:/devkitPro/libgba/lib\libgba.a(Compression.o)
- .debug_str     0x00000d88      0x275 C:/devkitPro/libgba/lib\libgba.a(fade.o)
- .debug_str     0x00000d88      0x334 C:/devkitPro/libgba/lib\libgba.a(interrupt.o)
- .debug_str     0x00000d88      0x64a C:/devkitPro/libgba/lib\libgba.a(BoyScout.o)
- .debug_str     0x00000d88       0xba C:/devkitPro/libgba/lib\libgba.a(InterruptDispatcher.o)
+ .debug_str     0x00000000      0xda6 PlayBoyScout.o
+                                0x4be (size before relaxing)
+ .debug_str     0x00000da6      0x27c C:/devkitPro/libgba/lib\libgba.a(Compression.o)
+ .debug_str     0x00000da6      0x275 C:/devkitPro/libgba/lib\libgba.a(fade.o)
+ .debug_str     0x00000da6      0x334 C:/devkitPro/libgba/lib\libgba.a(interrupt.o)
+ .debug_str     0x00000da6      0x64a C:/devkitPro/libgba/lib\libgba.a(BoyScout.o)
+ .debug_str     0x00000da6       0xba C:/devkitPro/libgba/lib\libgba.a(InterruptDispatcher.o)
 
 .debug_loc
  *(.debug_loc)
@@ -1066,7 +1066,7 @@ LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/14.2.0/../../../../arm-
 END GROUP
 LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/14.2.0/thumb/crtend.o
 LOAD C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/14.2.0/thumb/crtn.o
-OUTPUT(C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_new/audio/PlayBoyScout/PlayBoyScout.elf elf32-littlearm)
+OUTPUT(C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_git/picrossproject/audio/PlayBoyScout/PlayBoyScout.elf elf32-littlearm)
 LOAD linker stubs
 
 .debug_loclists

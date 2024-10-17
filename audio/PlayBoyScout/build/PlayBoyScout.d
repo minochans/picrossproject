@@ -1,5 +1,5 @@
 PlayBoyScout.o: \
- C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_new/audio/PlayBoyScout/source/PlayBoyScout.c \
+ C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_git/picrossproject/audio/PlayBoyScout/source/PlayBoyScout.c \
  C:/devkitPro/libgba/include/gba.h \
  C:/devkitPro/libgba/include/gba_affine.h \
  C:/devkitPro/libgba/include/gba_base.h \
@@ -18,8 +18,8 @@ PlayBoyScout.o: \
  C:/devkitPro/libgba/include/gba_video.h \
  C:/devkitPro/libgba/include/fade.h \
  C:/devkitPro/libgba/include/BoyScout.h \
- C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_new/audio/PlayBoyScout/build/tune_bgf.h \
- C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_new/audio/PlayBoyScout/build/ScoutSplash.h
+ C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_git/picrossproject/audio/PlayBoyScout/build/tune_bgf.h \
+ C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_git/picrossproject/audio/PlayBoyScout/build/ScoutSplash.h
 C:/devkitPro/libgba/include/gba.h:
 C:/devkitPro/libgba/include/gba_affine.h:
 C:/devkitPro/libgba/include/gba_base.h:
@@ -38,5 +38,5 @@ C:/devkitPro/libgba/include/gba_timers.h:
 C:/devkitPro/libgba/include/gba_video.h:
 C:/devkitPro/libgba/include/fade.h:
 C:/devkitPro/libgba/include/BoyScout.h:
-C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_new/audio/PlayBoyScout/build/tune_bgf.h:
-C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_new/audio/PlayBoyScout/build/ScoutSplash.h:
+C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_git/picrossproject/audio/PlayBoyScout/build/tune_bgf.h:
+C:/Users/minoc/OneDrive/Documents/GBA_dev/dev/picross_git/picrossproject/audio/PlayBoyScout/build/ScoutSplash.h:
