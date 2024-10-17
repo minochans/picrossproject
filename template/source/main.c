@@ -121,7 +121,7 @@ void drawSelCell(u32 cellSize, u32 sel_x, u32 sel_y, bool col)
         draw_color = GRID_COLOR;
     }
 
-    for (u32 i = 0; i < cellSize; i++) 
+    for (u32 i = 0; i <= cellSize; i++) 
     {
         Mode3PutPixel(start_draw_picx + i, start_draw_picy, draw_color);             //選択セル描画（上辺）
         Mode3PutPixel(start_draw_picx + i, start_draw_picy + cellSize, draw_color);  //選択セル描画（下辺）
